@@ -22,3 +22,26 @@ You need Docker & Docker Compose (v3.8+), a hosts entry mapping `gateway.exampl
    ```bash
    git clone https://github.com/Shahriarin2garden/-Kong-Authentik-OIDC-Gateway.git
    cd -Kong-Authentik-OIDC-Gateway
+2. **Start the stack**
+     ```bash
+    docker-compose up -d
+Configuration
+
+Configure Authentik
+
+Open http://localhost:8002 and log in (admin/adminpass).
+
+Follow init/authentik-setup.md to create groups, provider, and users.
+   docker-compose exec kong \
+   kong config db_import /usr/local/kong/declarative/kong.yml
+  
+
+##Running Tests
+
+  **Make test script executable**
+       ```bash
+  chmod +x scripts/test.sh
+  
+  **Execute end-to-end tests**
+     ```bash
+    ./scripts/test.sh
