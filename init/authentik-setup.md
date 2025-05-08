@@ -1,4 +1,5 @@
-# Authentik Initial Configuration
+```
+## Authentik Initial Configuration
 
 1. Access http://localhost:8002/ and login (admin/adminpass).
 
@@ -17,3 +18,4 @@
 4. Create Users:
    - userA / passwordA → service-a-group
    - userB / passwordB → service-b-group
+```
