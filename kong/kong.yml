@@ -1,0 +1,59 @@
+_format_version: '2.1'
+_transform: true
+
+services:
+  - name: service-a
+    url: http://service-a:5678
+    routes:
+      - name: route-a
+        paths: ['/service-a']
+    plugins:
+      - name: oidc
+        config:
+          client_id: kong-client
+          client_secret: secret
+          discovery: http://authentik:8000/application/o/.well-known/openid-configuration
+          introspection_endpoint: http://authentik:8000/application/o/introspect/
+          introspection_endpoint_auth_method: client_secret_post
+          bearer_only: true
+          realm: kong
+          redirect_uri: http://gateway.example.com:8000/callback
+          scopes:
+            - openid
+            - profile
+            - email
+          session_secret: kong-session-secret
+      - name: acl
+        config:
+          whitelist:
+            - service-a-group
+      - name: rate-limiting
+        config:
+          minute: 100
+          policy: local
+
+  - name: service-b
+    url: http://service-b:5678
+    routes:
+      - name: route-b
+        paths: ['/service-b']
+    plugins:
+      - name: oidc
+        config:
+          client_id: kong-client
+          client_secret: secret
+          discovery: http://authentik:8000/application/o/.well-known/openid-configuration
+          introspection_endpoint: http://authentik:8000/application/o/introspect/
+          introspection_endpoint_auth_method: client_secret_post
+          bearer_only: true
+          realm: kong
+          redirect_uri: http://gateway.example.com:8000/callback
+          scopes:
+            - openid
+            - profile
+            - email
+          session_secret: kong-session-secret
+      - name: acl
+        config:
+          whitelist:
+            - service-b-group

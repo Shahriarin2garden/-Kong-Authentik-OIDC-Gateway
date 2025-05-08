@@ -1,0 +1,10 @@
+roles:
+  - name: developer
+    permissions:
+      - resource: '/service-a'
+        methods: ['GET']
+
+  - name: admin
+    permissions:
+      - resource: '/service-b'
+        methods: ['*']
