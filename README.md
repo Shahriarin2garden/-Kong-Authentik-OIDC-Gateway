@@ -20,5 +20,5 @@ You need Docker & Docker Compose (v3.8+), a hosts entry mapping `gateway.exampl
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-org/kong-authentik-oidc-gateway.git
-   cd kong-authentik-oidc-gateway
+   git clone https://github.com/Shahriarin2garden/-Kong-Authentik-OIDC-Gateway.git
+   cd -Kong-Authentik-OIDC-Gateway
